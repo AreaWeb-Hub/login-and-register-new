@@ -1,5 +1,7 @@
 # Регистрация и авторизация на PHP
 
+#### HTML шаблон находится в ветке [layout](https://github.com/AreaWeb-Hub/login-and-register-new/tree/layout)
+
 ### База данных
 
 В текущем проекте уже существует готовый SQL для создания таблицы `users`. Создайте
