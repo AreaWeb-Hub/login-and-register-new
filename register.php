@@ -1,14 +1,14 @@
+<?php
+require_once __DIR__ . '/src/helpers.php';
+checkGuest();
+?>
+
 <!DOCTYPE html>
 <html lang="ru" data-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <title>AreaWeb - авторизация и регистрация</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-    <link rel="stylesheet" href="assets/app.css">
-</head>
+<?php include_once __DIR__ . '/components/head.php'?>
 <body>
 
-<form class="card">
+<form class="card" action="src/actions/register.php" method="post" enctype="multipart/form-data">
     <h2>Регистрация</h2>
 
     <label for="name">
@@ -18,9 +18,12 @@
             id="name"
             name="name"
             placeholder="Иванов Иван"
-            aria-invalid="true"
-            required
+            value="<?php echo old('name') ?>"
+            <?php echo validationErrorAttr('name'); ?>
         >
+        <?php if(hasValidationError('name')): ?>
+            <small><?php echo validationErrorMessage('name'); ?></small>
+        <?php endif; ?>
     </label>
 
     <label for="email">
@@ -30,8 +33,12 @@
             id="email"
             name="email"
             placeholder="ivan@areaweb.su"
-            required
+            value="<?php echo old('email') ?>"
+            <?php echo validationErrorAttr('email'); ?>
         >
+        <?php if(hasValidationError('email')): ?>
+            <small><?php echo validationErrorMessage('email'); ?></small>
+        <?php endif; ?>
     </label>
 
     <label for="avatar">Изображение профиля
@@ -39,7 +46,11 @@
             type="file"
             id="avatar"
             name="avatar"
+            <?php echo validationErrorAttr('avatar'); ?>
         >
+        <?php if(hasValidationError('avatar')): ?>
+            <small><?php echo validationErrorMessage('avatar'); ?></small>
+        <?php endif; ?>
     </label>
 
     <div class="grid">
@@ -50,8 +61,11 @@
                 id="password"
                 name="password"
                 placeholder="******"
-                required
+                <?php echo validationErrorAttr('password'); ?>
             >
+            <?php if(hasValidationError('password')): ?>
+                <small><?php echo validationErrorMessage('password'); ?></small>
+            <?php endif; ?>
         </label>
 
         <label for="password_confirmation">
@@ -61,7 +75,6 @@
                 id="password_confirmation"
                 name="password_confirmation"
                 placeholder="******"
-                required
             >
         </label>
     </div>
@@ -84,8 +97,8 @@
     >Продолжить</button>
 </form>
 
-<p>У меня уже есть <a href="/login.html">аккаунт</a></p>
+<p>У меня уже есть <a href="/">аккаунт</a></p>
 
-<script src="assets/app.js"></script>
+<?php include_once __DIR__ . '/components/scripts.php' ?>
 </body>
 </html>
