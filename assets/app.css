@@ -43,3 +43,21 @@ form {
     row-gap: 20px;
     padding: 100px;
 }
+
+.notice {
+    padding: 10px;
+    border-radius: 6px;
+    margin: 20px 0;
+}
+
+.notice.error {
+    border: 2px solid #762c2c;
+    background: #f3d3d3;
+    color: #762c2c;
+}
+
+.notice.success {
+    border: 2px solid #2c742b;
+    background: #e1fee3;
+    color: #2c742b;
+}
